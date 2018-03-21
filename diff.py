@@ -6,11 +6,6 @@ def readLineFrom(file_path):
         while line:
             yield line
             line = file_handle.readline()
-            try:
-                line = line.split()[1].replace("-", "")
-                line = float(line)
-            except:
-                print line
     yield None
 
 
@@ -22,7 +17,7 @@ def getLineNum(file_path):
     #print(cmd_output)
 
 def diff(line1, line2, line_idx, diff_num, precision_range=1e-5):
-    if type(line1) == 'str':
+    if type(line1) == str:
         if line1 != line2:
             print("{} diff:line1:{}line2:{}".format(line_idx, line1, line2))
             diff_num += 1
@@ -39,7 +34,6 @@ def diff(line1, line2, line_idx, diff_num, precision_range=1e-5):
 if __name__ == "__main__":
     import sys
     if len(sys.argv) != 3:
-        print("description: compare two length(line)-equal files")
         print("usage: python {} FILE1_PATH FILE2_PATH\n".format(sys.argv[0]))
         exit(-1)
 
@@ -61,12 +55,18 @@ if __name__ == "__main__":
     line_idx = 1
     diff_num = 0
 
-    while line1 and line2:
+    while True:
         diff_num = diff(line1, line2, line_idx, diff_num, precision_range)
+
         line1 = reader1.next()
         line2 = reader2.next()
         line_idx += 1
 
+        if line1 == None or line2 == None:
+           break 
+
+    print("line1:{}".format(line1))
+    print("line2:{}".format(line2))
     print("diff_num:{}".format(diff_num))
     print("all_point:{}".format(line_idx+1))
     print("diff_rate:{}".format(float(diff_num)/(line_idx)))
