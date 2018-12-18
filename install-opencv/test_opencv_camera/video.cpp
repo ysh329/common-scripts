@@ -4,7 +4,11 @@ using namespace std;
   
 int main()  
 {  
-    VideoCapture capture(0);  
+    // inner video
+    //VideoCapture capture(0);
+
+    // outer usb-camera
+    VideoCapture capture(1);
 
     capture.set(CV_CAP_PROP_FRAME_WIDTH, 640);
     capture.set(CV_CAP_PROP_FRAME_HEIGHT, 480);  
