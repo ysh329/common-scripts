@@ -1,0 +1,8 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.0)
+PROJECT(test_video)
+#@find_package(OpenCV REQUIRED COMPONENTS core highgui imgproc)
+#include_directories(${OpenCV_INCLUDE_DIRS})
+#link_directories(${OpenCV_LIBRARY_DIRS})
+include_directories(/usr/local/include)
+add_executable(test_video video.cpp)
+target_link_libraries(test_video opencv_core opencv_highgui opencv_imgproc)
