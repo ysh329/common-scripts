@@ -3,7 +3,7 @@ sudo add-apt-repository ppa:fcitx-team/nightly
 sudo apt update
 
 # basic
-sudo apt install -y git tmux vim
+sudo apt install -y git tmux vim lrzsz
 
 # pinyin
 sudo apt-get install fcitx
